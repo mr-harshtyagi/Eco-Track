@@ -34,8 +34,6 @@ const InitWasm = ({ children }) => {
 const queryClient = new QueryClient();
 
 export function Web3Provider({ children }: { children: React.ReactNode }) {
-  // const [mounted, setMounted] = React.useState(false);
-  // React.useEffect(() => setMounted(true), []);
   return (
     <WagmiConfig config={config}>
       <QueryClientProvider client={queryClient}>

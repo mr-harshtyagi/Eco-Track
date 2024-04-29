@@ -51,7 +51,7 @@ function Component() {
       <div className="p-4 flex justify-between bg-slate-50 rounded-lg my-2 mx-10 shadow-lg">
         <div className="flex gap-2 items-center">
           <img src="/logo.svg" className="h-10 w-10" />
-          <h1 className="font-bold">zkCreditScore</h1>
+          <h1 className="font-bold">EcoTrack</h1>
         </div>
         <ConnectKitButton showBalance />
       </div>
@@ -62,9 +62,9 @@ function Component() {
           <div className="flex justify-center mx-auto mt-40">
             <Card>
               <CardHeader>
-                <CardTitle>Credit Score</CardTitle>
+                <CardTitle>Submit Sustainibility Data</CardTitle>
                 <CardDescription>
-                  Click the button below to generate your credit score proof.
+                  Click the button below to submit your sustainibility data.
                 </CardDescription>
               </CardHeader>
               <CardContent className="flex justify-center">

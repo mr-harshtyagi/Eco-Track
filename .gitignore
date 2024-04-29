@@ -13,9 +13,12 @@
 # next.js
 /.next/
 /out/
+/cache
 
 # production
 /build
+/artifacts
+./circuits/target
 
 # misc
 .DS_Store

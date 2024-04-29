@@ -37,7 +37,7 @@ const config: HardhatUserConfig = {
     apiKey: process.env.SCROLLSCAN_API_KEY,
     customChains: [
       {
-        network: "sepoliaTestnet",
+        network: "scrollSepolia",
         chainId: 534351,
         urls: {
           apiURL: "https://api-sepolia.scrollscan.com/api",
@@ -46,9 +46,8 @@ const config: HardhatUserConfig = {
       },
     ],
   },
-
   networks: {
-    sepoliaTestnet: {
+    scrollSepolia: {
       url: `https://sepolia-rpc.scroll.io`,
       accounts: [process.env.DEPLOYER_PRIVATE_KEY as string],
     },

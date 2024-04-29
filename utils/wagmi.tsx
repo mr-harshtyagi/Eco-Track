@@ -7,7 +7,7 @@ export const config = createConfig(
   getDefaultConfig({
     appName: "eco-track",
     walletConnectProjectId: "2c47228d7859d86f61278d79d5df9723",
-    chains: [scrollSepolia, hardhat],
+    chains: [scrollSepolia],
   })
 );
 

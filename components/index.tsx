@@ -64,7 +64,7 @@ function Component() {
         <div className="flex justify-center mx-auto mt-40">
           <div className=" w-full flex flex-col items-center justify-center">
             <div className="text-center text-4xl font-bold">
-              Choose one of the the operation.
+              Choose one of the operation to perform.
             </div>
             <div className="text-center text-xl font-normal mt-2">
               Click one of the buttons below.

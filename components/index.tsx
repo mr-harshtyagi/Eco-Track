@@ -5,17 +5,20 @@ import {
   ReactEventHandler,
   FormEvent,
   ChangeEvent,
-} from 'react';
-import { toast } from 'react-toastify';
-import React from 'react';
-import { Noir } from '@noir-lang/noir_js';
-import { BarretenbergBackend, flattenPublicInputs } from '@noir-lang/backend_barretenberg';
-import { CompiledCircuit, ProofData } from '@noir-lang/types';
-import { compile, PathToFileSourceMap } from '@noir-lang/noir_wasm';
-import { useAccount, useConnect, useContractWrite } from 'wagmi';
-import { contractCallConfig } from '../utils/wagmi.jsx';
-import { bytesToHex } from 'viem';
-import { ConnectKitButton } from 'connectkit';
+} from "react";
+import { toast } from "react-toastify";
+import React from "react";
+import { Noir } from "@noir-lang/noir_js";
+import {
+  BarretenbergBackend,
+  flattenPublicInputs,
+} from "@noir-lang/backend_barretenberg";
+import { CompiledCircuit, ProofData } from "@noir-lang/types";
+import { compile, PathToFileSourceMap } from "@noir-lang/noir_wasm";
+import { useAccount, useConnect, useContractWrite } from "wagmi";
+import { contractCallConfig } from "../utils/wagmi.jsx";
+import { bytesToHex } from "viem";
+import { ConnectKitButton } from "connectkit";
 
 import {
   Card,
@@ -24,20 +27,22 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from './ui/card.jsx';
+} from "./ui/card.jsx";
+import SubmitSustanibilityData from "./submitSustanibilityData.jsx";
+import VerifyProof from "./verifyProof.jsx";
 
 function Component() {
   const [walletConnected, setWalletConnected] = useState(false);
   const [recheck, setRecheck] = useState(false);
-  const [user, setUser] = useState<any>({ category: '', loggedIn: false });
+  const [user, setUser] = useState<any>({ category: "", loggedIn: false });
   const { isConnected } = useAccount();
 
   useEffect(() => {
-    console.log('useEffect called');
+    console.log("useEffect called");
 
     if (isConnected) {
       setWalletConnected(true);
-      const user = localStorage.getItem('user');
+      const user = localStorage.getItem("user");
       if (user) {
         setUser(JSON.parse(user));
       }
@@ -56,29 +61,42 @@ function Component() {
         <ConnectKitButton showBalance />
       </div>
       {walletConnected ? (
-        user.loggedIn ? (
-          <>Logged In</>
-        ) : (
-          <div className="flex justify-center mx-auto mt-40">
-            <Card>
-              <CardHeader>
-                <CardTitle>Submit Sustainibility Data</CardTitle>
-                <CardDescription>
-                  Click the button below to submit your sustainibility data.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="flex justify-center">
-                <>QR Component</>
-              </CardContent>
-            </Card>
+        <div className="flex justify-center mx-auto mt-40">
+          <div className=" w-full flex flex-col items-center justify-center">
+            <div className="text-center text-4xl font-bold">
+              Choose one of the the operation.
+            </div>
+            <div className="text-center text-xl font-normal mt-2">
+              Click one of the buttons below.
+            </div>
+
+            <div className="flex justify-center gap-8 mt-4">
+              <SubmitSustanibilityData setRecheck={setRecheck} />
+              <VerifyProof setRecheck={setRecheck} />
+            </div>
           </div>
-        )
+          {/* <Card>
+            <CardHeader>
+              <CardTitle>Choose one of the two operations.</CardTitle>
+              <CardDescription>Click one of the buttons below.</CardDescription>
+            </CardHeader>
+            <CardContent className="flex justify-center gap-8">
+              <SubmitSustanibilityData />
+              <VerifyProof />
+            </CardContent>
+          </Card> */}
+        </div>
       ) : (
         <div className="mt-40 w-full flex flex-col items-center justify-center">
-          <div className="text-center text-4xl font-bold">Welcome to EcoTrack</div>
-          <div className="text-center text-xl font-bold">
-            A privacy-preserving sustainable practices tracker for companies
+          <div className="text-center text-4xl font-bold">
+            Welcome to EcoTrack
           </div>
+          <div className="text-center text-xl font-normal mt-2">
+            A privacy-preserving sustainablility practices tracker and verifier
+            for companies <br /> using Zero Knowledge (ZK) proofs.
+          </div>
+          <br />
+          <ConnectKitButton />
         </div>
       )}
     </>

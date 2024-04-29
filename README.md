@@ -8,8 +8,8 @@ environmental impact.
 
 ## Deployed Contract Addresses
 
-- EcoTrack.sol
-- UltraVerifier.sol
+- EcoTrack.sol 0x8dc7202c27de1d423ae8011f898ca172af28b762
+- UltraVerifier.sol 0x4612869797a1f8ec40d5fc12fe17519674dacf30
 
 ## Setup Instructions
 

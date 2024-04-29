@@ -7,8 +7,9 @@ contract EcoTrack {
 
     // Structure to hold sustainability data for a company
     struct SustainabilityData {
+        string companyName; // Name of the company
+        string companyRegNo; // Registration number of the company
         SustainabilityCategory emissionsCategory; // Category of emissions
-        SustainabilityCategory wasteCategory; // Category of waste
         bytes proof; // Flag indicating if data is verified
         bytes[] publicInputs;
         bool status;
@@ -18,26 +19,27 @@ contract EcoTrack {
     mapping(address => SustainabilityData) public sustainabilityRecords;
 
     // Event emitted when sustainability data is submitted and recorded
-    event SustainabilityDataSubmitted(address indexed company, SustainabilityCategory emissionsCategory, SustainabilityCategory wasteCategory);
+    event SustainabilityDataSubmitted(address indexed company, SustainabilityCategory emissionsCategory);
 
     // Function to submit sustainability data
-    function submitSustainabilityData(SustainabilityCategory _emissionsCategory, SustainabilityCategory _wasteCategory, bytes calldata _proof, bytes[] calldata _publicInputs) external {
+    function submitSustainabilityData(string memory _companyName, string memory _companyRegNo, SustainabilityCategory _emissionsCategory, bytes calldata _proof, bytes[] calldata _publicInputs) external {
         
         // Ensure data is not already submitted
         require(!sustainabilityRecords[msg.sender].status, "Data already submitted");
 
         // Record sustainability data for the company
-        sustainabilityRecords[msg.sender] = SustainabilityData(_emissionsCategory, _wasteCategory, _proof, _publicInputs, true);
+        sustainabilityRecords[msg.sender] = SustainabilityData(_companyName, _companyRegNo,_emissionsCategory, _proof, _publicInputs, true);
 
         // Emit event
-        emit SustainabilityDataSubmitted(msg.sender, _emissionsCategory, _wasteCategory);
+        emit SustainabilityDataSubmitted(msg.sender, _emissionsCategory);
     }
 
     // Function to get sustainability data for a company
-    function getSustainabilityData(address _company) external view returns (SustainabilityCategory, SustainabilityCategory, bytes memory, bytes[] memory,bool) {
+    function getSustainabilityData(address _company) external view returns (string memory, string memory,SustainabilityCategory, bytes memory, bytes[] memory,bool) {
         return (
+            sustainabilityRecords[_company].companyName,
+            sustainabilityRecords[_company].companyRegNo,
             sustainabilityRecords[_company].emissionsCategory,
-            sustainabilityRecords[_company].wasteCategory,
             sustainabilityRecords[_company].proof,
             sustainabilityRecords[_company].publicInputs,
             sustainabilityRecords[_company].status

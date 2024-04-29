@@ -16,7 +16,7 @@ import {
 import { CompiledCircuit, ProofData } from "@noir-lang/types";
 import { compile, PathToFileSourceMap } from "@noir-lang/noir_wasm";
 import { useAccount, useConnect, useContractWrite } from "wagmi";
-import { contractCallConfig } from "../utils/wagmi.jsx";
+import { verifierContractCallConfig } from "../utils/wagmi.jsx";
 import { bytesToHex } from "viem";
 import { ConnectKitButton } from "connectkit";
 

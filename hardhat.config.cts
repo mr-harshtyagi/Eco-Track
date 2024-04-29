@@ -33,8 +33,22 @@ const config: HardhatUserConfig = {
       optimizer: { enabled: true, runs: 5000 },
     },
   },
+  etherscan: {
+    apiKey: process.env.SCROLLSCAN_API_KEY,
+    customChains: [
+      {
+        network: "sepoliaTestnet",
+        chainId: 534351,
+        urls: {
+          apiURL: "https://api-sepolia.scrollscan.com/api",
+          browserURL: "https://sepolia.scrollscan.com",
+        },
+      },
+    ],
+  },
+
   networks: {
-    mumbai: {
+    sepoliaTestnet: {
       url: `https://sepolia-rpc.scroll.io`,
       accounts: [process.env.DEPLOYER_PRIVATE_KEY as string],
     },
@@ -43,9 +57,6 @@ const config: HardhatUserConfig = {
       url: "http://127.0.0.1:8545",
     },
     hardhat: {},
-  },
-  paths: {
-    sources: "./circuits/contract/noirstarter",
   },
 };
 

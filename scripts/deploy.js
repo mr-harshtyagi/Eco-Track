@@ -9,11 +9,16 @@ async function main() {
   // Deploy the verifier contract
   const verifier = await viem.deployContract("UltraVerifier");
 
+  // Deploy the EcoTrack contract
+  const ecoTrack = await viem.deployContract("EcoTrack");
+
   // Create a config object
   const config = {
     chainId: publicClient.chain.id,
     verifier: verifier.address,
-    abi: verifier.abi,
+    ecoTrack: ecoTrack.address,
+    verifierAbi: verifier.abi,
+    ecoTrackAbi: ecoTrack.abi,
   };
 
   // Print the config

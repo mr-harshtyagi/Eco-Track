@@ -11,9 +11,15 @@ export const config = createConfig(
   })
 );
 
-export const contractCallConfig = {
+export const verifierContractCallConfig = {
   address: addresses.verifier as `0x${string}`,
-  abi: addresses.abi,
+  abi: addresses.verifierAbi,
   chainId: addresses.chainId,
   functionName: "verify",
+};
+
+export const ecoTrackContractCallConfig = {
+  address: addresses.ecoTrack as `0x${string}`,
+  abi: addresses.ecoTrackAbi,
+  chainId: addresses.chainId,
 };

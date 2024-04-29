@@ -75,16 +75,6 @@ function Component() {
               <VerifyProof setRecheck={setRecheck} />
             </div>
           </div>
-          {/* <Card>
-            <CardHeader>
-              <CardTitle>Choose one of the two operations.</CardTitle>
-              <CardDescription>Click one of the buttons below.</CardDescription>
-            </CardHeader>
-            <CardContent className="flex justify-center gap-8">
-              <SubmitSustanibilityData />
-              <VerifyProof />
-            </CardContent>
-          </Card> */}
         </div>
       ) : (
         <div className="mt-40 w-full flex flex-col items-center justify-center">

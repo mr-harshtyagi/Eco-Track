@@ -8,7 +8,7 @@ environmental impact.
 
 ## Deployed App
 
-- [URL](https://ecotrack.vercel.app)
+- [Link](https://eco-track-mocha.vercel.app/)
 
 ## Deployed Contract Addresses
 

@@ -55,7 +55,7 @@ function Component() {
     <>
       <div className="p-4 flex justify-between bg-slate-50 rounded-lg my-2 mx-10 shadow-lg">
         <div className="flex gap-2 items-center">
-          <img src="/logo.svg" className="h-10 w-10" />
+          <img src="/logo.png" className="h-10 w-10" />
           <h1 className="font-bold">EcoTrack</h1>
         </div>
         <ConnectKitButton showBalance />

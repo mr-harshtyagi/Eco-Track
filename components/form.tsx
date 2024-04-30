@@ -74,6 +74,12 @@ export function DataForm() {
     address: addresses.ecoTrack as any,
     abi: addresses.ecoTrackAbi,
     functionName: "submitSustainabilityData",
+    onSuccess: () => {
+      toast.success("Proof submitted successfully");
+    },
+    onError: (error) => {
+      toast.error("Error submitting proof on chain");
+    },
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
